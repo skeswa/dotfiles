@@ -1,6 +1,7 @@
 VIM_DIR=".vim"
 VIM_CONFIG=".vimrc"
 PROFILE_CONFIG=".zprofile"
+TMUX_CONFIG=".tmux.conf"
 # Ensure the profile is setup
 if [ ! -f "$PROFILE_CONFIG" ]; then
 	echo "Downloading missing profile configuration..."
