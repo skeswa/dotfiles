@@ -4,18 +4,18 @@ PROFILE_CONFIG=".zprofile"
 # Ensure the profile is setup
 if [ ! -f "$PROFILE_CONFIG" ]; then
 	echo "Downloading missing profile configuration..."
-	wget https://raw.githubusercontent.com/skeswa/zsh-config/master/.zprofile &> /dev/null
+	wget https://raw.githubusercontent.com/skeswa/dotfiles/master/.zprofile &> /dev/null
 	source .zprofile
 fi
 # Ensure tmux config is loaded
 if [ ! -f "$TMUX_CONFIG" ]; then
 	echo "Downloading missing tmux configuration..."
-	wget https://raw.githubusercontent.com/skeswa/tmux-config/master/.tmux.conf &> /dev/null
+	wget https://raw.githubusercontent.com/skeswa/dotfiles/master/.tmux.conf &> /dev/null
 fi
 # Ensure the vim configuration
 if [ ! -f "$VIM_CONFIG" ]; then
 	echo "Downloading missing vim configuration..."
-	wget https://github.com/skeswa/vim-config/raw/master/.vimrc &> /dev/null
+	wget https://raw.githubusercontent.com/skeswa/dotfiles/master/.vimrc &> /dev/null
 fi
 # Ensure the vim directory
 if [ ! -d "$VIM_DIR" ]; then

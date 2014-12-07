@@ -1,6 +1,3 @@
-# Set Paths
-export GOPATH="/Users/sandile/go"
-
 # Connection Aliases
 ## ACM Web Server: sandile@acmsrv1.cis.temple.edu
 alias tuacm='ssh sandile@acmsrv1.cis.temple.edu'
@@ -65,9 +62,14 @@ export TERM='xterm-256color'
 ### enable 256color for terminal multiplexs
 alias tmux='tmux -2'
 alias screen='TERM=xterm-256color screen'
+## Update dotfiles
+alias update-dotfiles='vcsh dotfiles add -u && vcsh dotfiles commit -m "updates" && vcsh dotfiles push origin master'
 
 # Append to the path
 PATH=$PATH:~/dev/lib/phantomjs-1.9.7-macosx/bin # PhantomJS
 PATH=$PATH:~/dev/lib/android-sdk/platform-tools # ADB & Android Tools
 PATH=$PATH:~/dev/lib/ngrok 						# Ngrok
 PATH=$PATH:~/dev/lib/vcsh 						# vcsh
+
+# Environment variables
+export GOPATH="/Users/sandile/go"
