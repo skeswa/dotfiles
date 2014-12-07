@@ -63,7 +63,7 @@ export TERM='xterm-256color'
 alias tmux='tmux -2'
 alias screen='TERM=xterm-256color screen'
 ## Update dotfiles
-alias update-dotfiles='vcsh dotfiles add -u && vcsh dotfiles commit -m "updates" && vcsh dotfiles push origin master'
+alias update-dotfiles='(vcsh dotfiles add -u && vcsh dotfiles commit -m "updates" && vcsh dotfiles push origin master) &> /dev/null'
 
 # Append to the path
 PATH=$PATH:~/dev/lib/phantomjs-1.9.7-macosx/bin # PhantomJS
