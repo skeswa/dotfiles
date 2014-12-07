@@ -7,8 +7,9 @@ TMUX_CONFIG=".tmux.conf"
 if [ ! -f "$PROFILE_CONFIG" ]; then
 	echo "Downloading missing profile configuration..."
 	wget https://raw.githubusercontent.com/skeswa/dotfiles/master/.zprofile &> /dev/null
-	source .zprofile
 fi
+# Source the profile
+source .zprofile
 # Ensure tmux config is loaded
 if [ ! -f "$TMUX_CONFIG" ]; then
 	echo "Downloading missing tmux configuration..."
