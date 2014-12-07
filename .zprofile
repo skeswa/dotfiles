@@ -54,7 +54,7 @@ alias pubkey='cat ~/.ssh/id_rsa.pub'
 ## Git Status
 alias gs='git status'
 ## Expose port with ngrok
-alias expose='ngrok -authtoken hyPleVr0pGbBXePMpRwj --subdomain=sandile'
+alias expose='~/dev/lib/ngrok/ngrok -authtoken hyPleVr0pGbBXePMpRwj --subdomain=sandile'
 ## SSH -> SSHD
 alias ssh='sshrc'
 ## Tmux and other multiplexers
