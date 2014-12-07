@@ -1,0 +1,30 @@
+VIM_DIR=".vim"
+VIM_CONFIG=".vimrc"
+PROFILE_CONFIG=".zprofile"
+# Ensure the profile is setup
+if [ ! -f "$PROFILE_CONFIG" ]; then
+	echo "Downloading missing profile configuration..."
+	wget https://raw.githubusercontent.com/skeswa/zsh-config/master/.zprofile &> /dev/null
+	source .zprofile
+fi
+# Ensure tmux config is loaded
+if [ ! -f "$TMUX_CONFIG" ]; then
+	echo "Downloading missing tmux configuration..."
+	wget https://raw.githubusercontent.com/skeswa/tmux-config/master/.tmux.conf &> /dev/null
+fi
+# Ensure the vim configuration
+if [ ! -f "$VIM_CONFIG" ]; then
+	echo "Downloading missing vim configuration..."
+	wget https://github.com/skeswa/vim-config/raw/master/.vimrc &> /dev/null
+fi
+# Ensure the vim directory
+if [ ! -d "$VIM_DIR" ]; then
+	echo "Downloading and installing vundle..."
+	# Get vundle from github
+	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim &> /dev/null
+	# Installing the vim dependencies
+	echo "Running a vundle plugin install... (This may take a while)"
+	# Perform a bundle install extenally to vim - send a newline to bypass errors
+	(echo -ne '\n' | vim +PluginInstall +qall) &> /dev/null
+	echo "Finished installing vim dependencies!" && echo
+fi
