@@ -28,11 +28,11 @@ alias goto_tudev='cd ~/dev/repos/tudev/website && git status'
 
 # Tmux Shortcuts
 ## Open the chronicle tmux session
-alias tmux_chronicle="tmux a -t chronicle"
+alias tmux_chronicle="tmux a -t chronicle || tmux new-session -s chronicle"
 ## Open the tudev tmux session
-alias tmux_tudev="tmux a -t tudev"
+alias tmux_tudev="tmux a -t tudev || tmux new-session-s tudev"
 ## Open the owlhacks tmux session
-alias tmux_owlhacks="tmux a -t owlhacks"
+alias tmux_owlhacks="tmux a -t owlhacks || tmux new-session -s owlhacks"
 
 # Other Knick-Knacks
 ## Check LoL ping
