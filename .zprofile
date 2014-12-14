@@ -1,20 +1,8 @@
 # Connection Aliases
-## ACM Web Server: sandile@acmsrv1.cis.temple.edu
-alias tuacm='ssh sandile@acmsrv1.cis.temple.edu'
-## Technuf Elara: skeswa@elara.technuf.com
-alias elara='ssh skeswa@elara.technuf.com'
-## Flappyo
-alias flappyo='ssh root@104.131.216.231'
 ## Tom's Katarina - Password 'dabdabd6'
 alias katarina='ssh root@bitbeam.info'
-## ACM DB Server
-alias tuacmdb='ssh root@104.131.192.61'
-## CIS 3238
-alias 3238='ssh tue95828@babyhuey.cis.temple.edu'
 # Sandile.io Server
 alias sandileio='ssh root@sandile.io'
-# Beagle Bone
-alias beaglebone='ssh root@192.168.7.2'
 # Owlhacks
 alias owlhacks='ssh tudev@owlhacks.cloudapp.net'
 # Tudev
@@ -29,14 +17,8 @@ alias goto_repos='cd ~/dev/repos'
 alias goto_hack='cd ~/dev/repos/hack'
 ## Generic vagrant teleport
 alias goto_vagrant='cd ~/dev/vagrant'
-## Temple ACM Site
-alias goto_tuacm='cd ~/dev/repos/tuacm/tuacm-site && git status'
 ## Turbo
 alias goto_turbo='cd ~/go/src/github.com/logmein3546/turbo && git status'
-## Temple ACM Site
-alias goto_aphelia='cd ~/dev/repos/technuf/aphelia-1.2 && git status'
-## BCV stuff
-alias goto_bcv_ng_query='cd ~/dev/repos/bcv/ng-query && git status'
 ## Conch
 alias goto_conch='cd ~/dev/repos/temple/conch && git status'
 ## Owlhacks
