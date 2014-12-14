@@ -26,6 +26,14 @@ alias goto_owlhacks='cd ~/dev/repos/owlhacks/site && git status'
 ## Tudev
 alias goto_tudev='cd ~/dev/repos/tudev/website && git status'
 
+# Tmux Shortcuts
+## Open the chronicle tmux session
+alias tmux_chronicle="tmux a -t chronicle"
+## Open the tudev tmux session
+alias tmux_tudev="tmux a -t tudev"
+## Open the owlhacks tmux session
+alias tmux_owlhacks="tmux a -t owlhacks"
+
 # Other Knick-Knacks
 ## Check LoL ping
 alias lolping='ping 216.52.241.254'
