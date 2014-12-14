@@ -62,14 +62,14 @@ export TERM='xterm-256color'
 ### enable 256color for terminal multiplexs
 alias tmux='tmux -2'
 alias screen='TERM=xterm-256color screen'
+### easily re-source tmux after conf changes
+alias refresh-tmux='tmux source-file ~/.tmux.conf'
 ## Update dotfiles
 alias update-dotfiles='(vcsh dotfiles add -u && vcsh dotfiles commit -m "updates" && vcsh dotfiles push origin master) &> /dev/null'
 
 # Append to the path
-PATH=$PATH:~/dev/lib/phantomjs-1.9.7-macosx/bin # PhantomJS
-PATH=$PATH:~/dev/lib/android-sdk/platform-tools # ADB & Android Tools
-PATH=$PATH:~/dev/lib/ngrok 						# Ngrok
-PATH=$PATH:~/dev/lib/vcsh 						# vcsh
+PATH=$PATH:~/dev/lib/phantomjs-1.9.7-macosx/bin:~/dev/lib/android-sdk/platform-tools:~/dev/lib/vcsh:~/dev/lib/apache-maven-3.2.3/bin
 
 # Environment variables
 export GOPATH="/Users/sandile/go"
+export M2_HOME="~/dev/lib/apache-maven-3.2.3"

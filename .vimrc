@@ -21,6 +21,8 @@ Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 " the gotham color scheme
 Plugin 'whatyouhide/vim-gotham'
+" trailing whitespace management
+Plugin 'bronson/vim-trailing-whitespace'
 
 """" LANGUAGE PLUGINS """"
 
