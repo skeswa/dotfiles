@@ -62,6 +62,7 @@ alias update-dotfiles='(vcsh dotfiles add -u && vcsh dotfiles commit -m "updates
 # Append to the path
 ## Paths in order: phantom js, android sdk, vcsh, maven
 PATH=$PATH:~/dev/lib/phantomjs-1.9.7-macosx/bin:~/dev/lib/android-sdk/platform-tools:~/dev/lib/vcsh:~/dev/lib/apache-maven-3.2.3/bin
+export PATH
 
 # Environment variables
 export GOPATH="/Users/sandile/go"

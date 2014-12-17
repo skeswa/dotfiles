@@ -36,6 +36,9 @@ Plugin 'groenewege/vim-less'
 Plugin 'tpope/vim-markdown'
 " Coffeescript editing
 Plugin 'kchmck/vim-coffee-script'
+" Rust editing
+Plugin 'wting/rust.vim'
+Plugin 'cespare/vim-toml'
 
 """" INTERFACE PLUGINS """"
 
