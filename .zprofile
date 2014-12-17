@@ -27,14 +27,12 @@ alias goto_owlhacks='cd ~/dev/repos/owlhacks/site && git status'
 alias goto_tudev='cd ~/dev/repos/tudev/website && git status'
 
 # Tmux Shortcuts
-## Open the chronicle tmux session
-alias tmux_chronicle="tmux a -t chronicle || tmux new-session -s chronicle"
-## Open the tudev tmux session
-alias tmux_tudev="tmux a -t tudev || tmux new-session-s tudev"
-## Open the owlhacks tmux session
-alias tmux_owlhacks="tmux a -t owlhacks || tmux new-session -s owlhacks"
 
 # Other Knick-Knacks
+## Make path and go there
+mkcd() {
+	mkdir -p "$@" && cd "$@";
+}
 ## Check LoL ping
 alias lolping='ping 216.52.241.254'
 ## Check google ping
@@ -54,6 +52,10 @@ alias tmux='tmux -2'
 alias screen='TERM=xterm-256color screen'
 ### easily re-source tmux after conf changes
 alias refresh-tmux='tmux source-file ~/.tmux.conf'
+### easy shortcut for sessions
+mux() {
+	tmux a -t "$@" || tmux new-session -s "$@";
+}
 ## Update dotfiles
 alias update-dotfiles='(vcsh dotfiles add -u && vcsh dotfiles commit -m "updates" && vcsh dotfiles push origin master) &> /dev/null'
 
