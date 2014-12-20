@@ -60,9 +60,10 @@ mux() {
 alias update-dotfiles='(~/dev/lib/vcsh/vcsh dotfiles add -u && vcsh dotfiles commit -m "updates" && vcsh dotfiles push origin master) &> /dev/null'
 
 # Append to the path
-## Paths in order: phantom js, android sdk, vcsh, maven
-PATH=$PATH:~/dev/lib/phantomjs-1.9.7-macosx/bin:~/dev/lib/android-sdk/platform-tools:~/dev/lib/vcsh:~/dev/lib/apache-maven-3.2.3/bin
-export PATH
+export PATH=$PATH:~/dev/lib/phantomjs-1.9.7-macosx/bin
+export PATH=$PATH:~/dev/lib/android-sdk/platform-tools
+export PATH=$PATH:~/dev/lib/vcsh
+export PATH=$PATH:~/dev/lib/apache-maven-3.2.3/bin
 
 # Environment variables
 export GOPATH="/Users/sandile/go"
