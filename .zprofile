@@ -31,7 +31,7 @@ alias goto_tudev='cd ~/dev/repos/tudev/website && git status'
 # Other Knick-Knacks
 ## Make path and go there
 mkcd() {
-	mkdir -p "$@" && cd "$@";
+    mkdir -p "$@" && cd "$@";
 }
 ## Check LoL ping
 alias lolping='ping 216.52.241.254'
@@ -54,10 +54,10 @@ alias screen='TERM=xterm-256color screen'
 alias refresh-tmux='tmux source-file ~/.tmux.conf'
 ### easy shortcut for sessions
 mux() {
-	tmux a -t "$@" || tmux new-session -s "$@";
+    tmux a -t "$@" || tmux new-session -s "$@";
 }
 ## Update dotfiles
-alias update-dotfiles='(vcsh dotfiles add -u && vcsh dotfiles commit -m "updates" && vcsh dotfiles push origin master) &> /dev/null'
+alias update-dotfiles='(~/dev/lib/vcsh/vcsh dotfiles add -u && vcsh dotfiles commit -m "updates" && vcsh dotfiles push origin master) &> /dev/null'
 
 # Append to the path
 ## Paths in order: phantom js, android sdk, vcsh, maven

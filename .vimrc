@@ -6,6 +6,13 @@ set encoding=utf-8
 " Whitespace etc.
 set relativenumber
 set ts=4 sw=4			" Sets tabs to 4 spaces
+set softtabstop=4
+set expandtab
+set backspace=indent,eol,start " defaults to eol,start iirc
+" Special tab formatting
+highlight SpecialKey ctermfg=1
+set list
+set listchars=tab:»·
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
