@@ -26,8 +26,6 @@ alias goto_owlhacks='cd ~/dev/repos/owlhacks/site && git status'
 ## Tudev
 alias goto_tudev='cd ~/dev/repos/tudev/website && git status'
 
-# Tmux Shortcuts
-
 # Other Knick-Knacks
 ## Make path and go there
 mkcd() {
@@ -39,14 +37,10 @@ alias lolping='ping 216.52.241.254'
 alias googping='ping google.com'
 ## Print Pubkey
 alias pubkey='cat ~/.ssh/id_rsa.pub'
-## Git Status
-alias gs='git status'
 ## Expose port with ngrok
 alias expose='~/dev/lib/ngrok/ngrok -authtoken hyPleVr0pGbBXePMpRwj --subdomain=sandile'
 ## SSH -> SSHD
 alias ssh='sshrc'
-## Tmux and other multiplexers
-export TERM='xterm-256color'
 ### enable 256color for terminal multiplexs
 alias tmux='tmux -2'
 alias screen='TERM=xterm-256color screen'
@@ -68,3 +62,5 @@ export PATH=$PATH:~/dev/lib/apache-maven-3.2.3/bin
 # Environment variables
 export GOPATH="/Users/sandile/go"
 export M2_HOME="~/dev/lib/apache-maven-3.2.3"
+## Tmux and other multiplexers
+export TERM='xterm-256color'
