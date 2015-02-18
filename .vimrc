@@ -1,16 +1,17 @@
-set nocompatible              	" be iMproved, required
-filetype off                  	" required
-set t_Co=256					" fixing color issues in iTerm
+set nocompatible                " be iMproved, required
+filetype off                    " required
+set t_Co=256                    " fixing color issues in iTerm
 set encoding=utf-8
 
 " Whitespace etc.
 set relativenumber
-set ts=4 sw=4			" Sets tabs to 4 spaces
-set softtabstop=4
-set expandtab
-set backspace=indent,eol,start " defaults to eol,start iirc
+set ts=4 sw=4                   " Sets tabs to 4 spaces
+set softtabstop=4               " Control how many columns vim uses when you hit Tab in insert mode
+set expandtab                   " hitting Tab in insert mode will produce the appropriate number of spaces
+set backspace=indent,eol,start  " defaults to eol,start iirc
+
 " Special tab formatting
-highlight SpecialKey ctermfg=1
+highlight SpecialKey ctermfg=1  " All of this replaces tabs with »···
 set list
 set listchars=tab:»·
 
@@ -22,14 +23,15 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-" the baller-ass status line
-Plugin 'bling/vim-airline'
-" the git status line
-Plugin 'airblade/vim-gitgutter'
-" the gotham color scheme
+
+"""" COLOR SCHEMES """"
+
+" Gotham color scheme
 Plugin 'whatyouhide/vim-gotham'
-" trailing whitespace management
-Plugin 'bronson/vim-trailing-whitespace'
+" Solarized color scheme
+Plugin 'altercation/vim-colors-solarized'
+" Tomorrow Color Scheme
+Plugin 'chriskempson/vim-tomorrow-theme'
 
 """" LANGUAGE PLUGINS """"
 
@@ -46,11 +48,21 @@ Plugin 'kchmck/vim-coffee-script'
 " Rust editing
 Plugin 'wting/rust.vim'
 Plugin 'cespare/vim-toml'
+" Sass editing
+Plugin 'tpope/vim-haml'
+" Golang editing
+Plugin 'fatih/vim-go'
 
 """" INTERFACE PLUGINS """"
 
 " NERD Tree - tree browser
 Plugin 'scrooloose/nerdtree'
+" the baller-ass status line
+Plugin 'itchyny/lightline.vim'
+" the git status line
+Plugin 'airblade/vim-gitgutter'
+" trailing whitespace management
+Plugin 'bronson/vim-trailing-whitespace'
 
 """" COMMAND PLUGINS """"
 
@@ -65,22 +77,34 @@ filetype plugin indent on    " required
 
 """" AIRLINE CONFIGURATION """"
 
+" Put file format in the line
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
 " Put your non-Plugin stuff after this line
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-set laststatus=2		" ensures that airline always visible
+let g:lightline = {
+    \ 'colorscheme': 'powerline',
+    \ 'component': {
+    \   'fileformat': 'MyFileformat',
+    \ }
+    \ }
+set laststatus=2                " ensures that airline always visible
 
 """" MISC TWEAKS """"
 
 " More natural splitting
 set splitbelow
 set splitright
-" Open nerd tree on startup
-autocmd vimenter * NERDTree
+" Open nerd tree on startup if no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Auto-close nerd tree when its the last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | en
+
+"""" CUSTOM COMMANDS """
+
+" Kill all the trailing whitespace
+command TrimWhitespace :%s/\s\+$//
 
 """" KEY RE-MAPPINGS """"
 
