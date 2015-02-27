@@ -26,12 +26,8 @@ Plugin 'gmarik/Vundle.vim'
 
 """" COLOR SCHEMES """"
 
-" Gotham color scheme
-Plugin 'whatyouhide/vim-gotham'
-" Solarized color scheme
-Plugin 'altercation/vim-colors-solarized'
-" Tomorrow Color Scheme
-Plugin 'chriskempson/vim-tomorrow-theme'
+" Spacegray color scheme
+Plugin 'skeswa/Spacegray.vim'
 
 """" LANGUAGE PLUGINS """"
 
@@ -58,7 +54,7 @@ Plugin 'fatih/vim-go'
 " NERD Tree - tree browser
 Plugin 'scrooloose/nerdtree'
 " the baller-ass status line
-Plugin 'itchyny/lightline.vim'
+Plugin 'skeswa/lightline.vim'
 " the git status line
 Plugin 'airblade/vim-gitgutter'
 " trailing whitespace management
@@ -72,21 +68,14 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()               " required
+filetype plugin indent on       " required
 
-"""" AIRLINE CONFIGURATION """"
+"""" LIGHTLINE CONFIGURATION """"
 
-" Put file format in the line
-function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
 " Put your non-Plugin stuff after this line
 let g:lightline = {
-    \ 'colorscheme': 'powerline',
-    \ 'component': {
-    \   'fileformat': 'MyFileformat',
-    \ }
+    \ 'colorscheme': 'spacegray'
     \ }
 set laststatus=2                " ensures that airline always visible
 
@@ -100,6 +89,8 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Auto-close nerd tree when its the last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | en
+" Ctrl+P plugin needs to ignore some folders
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 """" CUSTOM COMMANDS """
 
@@ -108,11 +99,11 @@ command TrimWhitespace :%s/\s\+$//
 
 """" KEY RE-MAPPINGS """"
 
-" Newlines oo, 00
-nmap oo o<Esc>j
+" Newlines oo
+nmap oo o<Esc>
 " Open NERD tree with Ctrl + N
 map <C-n> :NERDTreeToggle<CR>
 
 syntax enable
-colorscheme gotham
+colorscheme spacegray
 set backspace=indent,eol,start

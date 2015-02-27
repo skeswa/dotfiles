@@ -1,20 +1,16 @@
 # Connection Aliases
-## Tom's Katarina - Password 'dabdabd6'
-alias katarina='ssh root@bitbeam.info'
-# Sandile.io Server
-alias sandileio='ssh root@sandile.io'
+
 # Owlhacks
 alias owlhacks='ssh tudev@owlhacks.cloudapp.net'
-# Tudev
-alias tudev='ssh tudev@tudev.cloudapp.net'
 # Technuf Chronicle
 alias chronicle='ssh skeswa@chronicle.technuf.com'
 # Group Direct
-alias groupdirect='ssh -i ~/.ssh/group-direct-keypair.pem ubuntu@54.186.34.15'
+alias group-direct='ssh -i ~/.ssh/group-direct-keypair.pem ubuntu@54.186.34.15'
 # Atlas
 alias atlas='ssh -i ~/.ssh/atlas.pem ubuntu@52.10.51.112'
 
 # Workspace Teleports
+
 ## Generic repos teleport
 alias goto_repos='cd ~/dev/repos'
 ## Generic hack  teleport
@@ -31,6 +27,10 @@ alias goto_owlhacks='cd ~/dev/repos/owlhacks/site && git status'
 alias goto_tudev='cd ~/dev/repos/tudev/website && git status'
 ## Go workspace
 alias goto_go='cd ~/go/src/github.com/skeswa'
+## Devpay
+alias goto_devpay='cd ~/go/src/github.com/skeswa/devpay'
+## Conch
+alias goto_conch='cd ~/dev/repos/temple/conch'
 
 # Other Knick-Knacks
 ## Make path and go there
@@ -69,6 +69,7 @@ export PATH=$PATH:$GOPATH/bin
 # Environment variables
 export GOPATH="/Users/sandile/go"
 export M2_HOME="~/dev/lib/apache-maven-3.2.3"
+export PORT="3000"
 
 ## Tmux and other multiplexers
 export TERM='xterm-256color'
