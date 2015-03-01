@@ -23,6 +23,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+" file explorer plugin
+Plugin 'tpope/vim-vinegar'
 
 """" COLOR SCHEMES """"
 
@@ -51,8 +53,6 @@ Plugin 'fatih/vim-go'
 
 """" INTERFACE PLUGINS """"
 
-" NERD Tree - tree browser
-Plugin 'scrooloose/nerdtree'
 " the baller-ass status line
 Plugin 'skeswa/lightline.vim'
 " the git status line
@@ -84,13 +84,6 @@ set laststatus=2                " ensures that airline always visible
 " More natural splitting
 set splitbelow
 set splitright
-" Open nerd tree on startup if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" Auto-close nerd tree when its the last window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | en
-" Ctrl+P plugin needs to ignore some folders
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 """" CUSTOM COMMANDS """
 
@@ -101,8 +94,6 @@ command TrimWhitespace :%s/\s\+$//
 
 " Newlines oo
 nmap oo o<Esc>
-" Open NERD tree with Ctrl + N
-map <C-n> :NERDTreeToggle<CR>
 
 syntax enable
 colorscheme spacegray
