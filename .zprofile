@@ -1,13 +1,17 @@
 # Connection Aliases
 
-# Owlhacks
-alias owlhacks='ssh tudev@owlhacks.cloudapp.net'
-# Technuf Chronicle
-alias chronicle='ssh skeswa@chronicle.technuf.com'
-# Group Direct
-alias group-direct='ssh -i ~/.ssh/group-direct-keypair.pem ubuntu@54.186.34.15'
-# Atlas
-alias atlas='ssh -i ~/.ssh/atlas.pem ubuntu@52.10.51.112'
+## Owlhacks
+alias ssh_owlhacks='ssh tudev@owlhacks.cloudapp.net'
+## Technuf Chronicle
+alias ssh_chronicle='ssh skeswa@chronicle.technuf.com'
+## Group Direct
+alias ssh_groupdirect='ssh -i ~/.ssh/group-direct-keypair.pem ubuntu@54.186.34.15'
+## Atlas
+alias ssh_atlas='ssh -i ~/.ssh/atlas.pem ubuntu@52.10.51.112'
+## Conch
+alias ssh_conch='ssh skeswa@conchapp.cloudapp.net'
+## Viridity Pentaho
+alias ssh_pentaho='ssh -i ~/.ssh/viridity-pentaho.pem ubuntu@52.11.85.249'
 
 # Workspace Teleports
 
@@ -27,8 +31,8 @@ alias goto_owlhacks='cd ~/dev/repos/owlhacks/site && git status'
 alias goto_tudev='cd ~/dev/repos/tudev/website && git status'
 ## Go workspace
 alias goto_go='cd ~/go/src/github.com/skeswa'
-## Devpay
-alias goto_devpay='cd ~/go/src/github.com/skeswa/devpay'
+## Equitize
+alias goto_equitize='cd ~/go/src/github.com/skeswa/equitize'
 ## Conch
 alias goto_conch='cd ~/dev/repos/temple/conch'
 
@@ -47,10 +51,10 @@ alias pubkey='cat ~/.ssh/id_rsa.pub'
 alias gs='git status'
 ## Expose port with ngrok
 alias expose='~/dev/lib/ngrok/ngrok -authtoken hyPleVr0pGbBXePMpRwj --subdomain=sandile'
-### enable 256color for terminal multiplexs
+## enable 256color for terminal multiplexs
 alias tmux='tmux -2'
 alias screen='TERM=xterm-256color screen'
-### easily re-source tmux after conf changes
+## easily re-source tmux after conf changes
 alias refresh-tmux='tmux source-file ~/.tmux.conf'
 ### easy shortcut for sessions
 mux() {
