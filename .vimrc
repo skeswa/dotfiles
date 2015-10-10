@@ -1,21 +1,23 @@
-set nocompatible                " be iMproved, required
-filetype off                    " required
-set t_Co=256                    " fixing color issues in iTerm
-set encoding=utf-8
+set nocompatible        " be iMproved, required
+filetype off            " required
+set t_Co=256            " fixing color issues in iTerm
+set encoding=utf-8      " because duh
 
-" Whitespace etc.
-set relativenumber
-set ts=4 sw=4                   " Sets tabs to 4 spaces
-set softtabstop=4               " Control how many columns vim uses when you hit Tab in insert mode
-set expandtab                   " hitting Tab in insert mode will produce the appropriate number of spaces
-set backspace=indent,eol,start  " defaults to eol,start iirc
+set noswapfile          " fuck swap files
+set relativenumber      " shows linenumbers relative to your current one
+set ts=2 sw=2           " because tabs should be two spaces
+set softtabstop=2       " ^^^
+set expandtab           " to insert space characters whenever the tab key is pressed
+set backspace=indent,eol,start
+set autoindent
+set smartindent
 
-" Special tab formatting
-highlight SpecialKey ctermfg=1  " All of this replaces tabs with »···
+" All of this replaces tabs with »···
+highlight SpecialKey ctermfg=1
 set list
 set listchars=tab:»·
 
-" set the runtime path to include Vundle and initialize
+" Set the runtime path to include Vundle and initialize it
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -23,78 +25,50 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
 " file explorer plugin
 Plugin 'tpope/vim-vinegar'
 
-"""" COLOR SCHEMES """"
-
-" Spacegray color scheme
-Plugin 'skeswa/Spacegray.vim'
+" colorscheme
+Plugin 'chriskempson/base16-vim'
 
 """" LANGUAGE PLUGINS """"
 
-" JS editing
-Plugin 'pangloss/vim-javascript'
-" JSX editing
+" js and jsx highlighting
 Plugin 'mxw/vim-jsx'
-" LESS editing
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+" less editing
 Plugin 'groenewege/vim-less'
-" Markdown editing
-Plugin 'tpope/vim-markdown'
-" Coffeescript editing
-Plugin 'kchmck/vim-coffee-script'
-" Rust editing
-Plugin 'wting/rust.vim'
-Plugin 'cespare/vim-toml'
-" Sass editing
+
+" sass editing
 Plugin 'tpope/vim-haml'
+
 " Golang editing
 Plugin 'fatih/vim-go'
 
 """" INTERFACE PLUGINS """"
 
-" the baller-ass status line
-Plugin 'skeswa/lightline.vim'
-" the git status line
-Plugin 'airblade/vim-gitgutter'
-" trailing whitespace management
-Plugin 'bronson/vim-trailing-whitespace'
+" fancy-ass status line that makes me happy
+Plugin 'bling/vim-airline'
+let g:airline_powerline_fonts = 1 	" Maximise the pretty
+set laststatus=2
 
-"""" COMMAND PLUGINS """"
+" makes tmux look like airline
+Plugin 'edkolev/tmuxline.vim'
 
-" CtrlP
+"""" UTILITY PLUGINS """"
+
+" fuzzy file finder
 Plugin 'kien/ctrlp.vim'
-" Emmet.io
-Plugin 'mattn/emmet-vim'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/* " Ignore some stuff
+
+"""" CLOSING STATEMENTS """"
 
 " All of your Plugins must be added before the following line
-call vundle#end()               " required
-filetype plugin indent on       " required
-
-"""" LIGHTLINE CONFIGURATION """"
-
-" Put your non-Plugin stuff after this line
-let g:lightline = {
-    \ 'colorscheme': 'spacegray'
-    \ }
-set laststatus=2                " ensures that airline always visible
-
-"""" MISC TWEAKS """"
-
-" More natural splitting
-set splitbelow
-set splitright
-
-"""" CUSTOM COMMANDS """
-
-" Kill all the trailing whitespace
-command TrimWhitespace :%s/\s\+$//
-
-"""" KEY RE-MAPPINGS """"
-
-" Newlines oo
-nmap oo o<Esc>
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 syntax enable
-colorscheme spacegray
-set backspace=indent,eol,start
+set background=dark
+colorscheme base16-ocean
