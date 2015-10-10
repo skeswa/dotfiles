@@ -1,79 +1,147 @@
-# Connection Aliases
+#
+# Executes commands at login pre-zshrc.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
-## Owlhacks
-alias ssh_owlhacks='ssh tudev@owlhacks.cloudapp.net'
-## Technuf Chronicle
-alias ssh_chronicle='ssh skeswa@chronicle.technuf.com'
-## Group Direct
-alias ssh_groupdirect='ssh -i ~/.ssh/group-direct-keypair.pem ubuntu@54.186.34.15'
-## Atlas
-alias ssh_atlas='ssh -i ~/.ssh/atlas.pem ubuntu@52.10.51.112'
-## Conch
-alias ssh_conch='ssh skeswa@conchapp.cloudapp.net'
-## Viridity Pentaho
-alias ssh_pentaho='ssh -i ~/.ssh/viridity-pentaho.pem ubuntu@52.11.85.249'
+#
+# Browser
+#
 
-# Workspace Teleports
+if [[ "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
+fi
 
-## Generic repos teleport
-alias goto_repos='cd ~/dev/repos'
-## Generic hack  teleport
-alias goto_hack='cd ~/dev/repos/hack'
-## Generic vagrant teleport
-alias goto_vagrant='cd ~/dev/vagrant'
-## Turbo
-alias goto_turbo='cd ~/go/src/github.com/logmein3546/turbo && git status'
-## Conch
-alias goto_conch='cd ~/dev/repos/temple/conch && git status'
-## Owlhacks
-alias goto_owlhacks='cd ~/dev/repos/owlhacks/site && git status'
-## Tudev
-alias goto_tudev='cd ~/dev/repos/tudev/website && git status'
-## Go workspace
-alias goto_go='cd ~/go/src/github.com/skeswa'
-## Equitize
-alias goto_equitize='cd ~/go/src/github.com/skeswa/equitize'
-## Conch
-alias goto_conch='cd ~/dev/repos/temple/conch'
+#
+# Editors
+#
 
-# Other Knick-Knacks
-## Make path and go there
-mkcd() {
-    mkdir -p "$@" && cd "$@";
-}
-## Check LoL ping
-alias lolping='ping 216.52.241.254'
-## Check google ping
-alias googping='ping google.com'
-## Print Pubkey
-alias pubkey='cat ~/.ssh/id_rsa.pub'
-## Git Status
-alias gs='git status'
-## Expose port with ngrok
-alias expose='~/dev/lib/ngrok/ngrok -authtoken hyPleVr0pGbBXePMpRwj --subdomain=sandile'
-## enable 256color for terminal multiplexs
-alias tmux='tmux -2'
-alias screen='TERM=xterm-256color screen'
-## easily re-source tmux after conf changes
-alias refresh-tmux='tmux source-file ~/.tmux.conf'
-### easy shortcut for sessions
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
+
+#
+# Language
+#
+
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+
+#
+# Paths
+#
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
+
+# Set the the list of directories that cd searches.
+# cdpath=(
+#   $cdpath
+# )
+
+# Set the list of directories that Zsh searches for programs.
+path=(
+  /usr/local/{bin,sbin}
+  $path
+)
+
+#
+# Less
+#
+
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+
+# Set the Less input preprocessor.
+# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
+if (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+#
+# Temporary Files
+#
+
+if [[ ! -d "$TMPDIR" ]]; then
+  export TMPDIR="/tmp/$LOGNAME"
+  mkdir -p -m 700 "$TMPDIR"
+fi
+
+TMPPREFIX="${TMPDIR%/}/zsh"
+
+########################### SANDILE'S CONFIGURATION ###########################
+#
+## Environment
+#
+### Vagrant
+#
+export VAGRANT_DEFAULT_PROVIDER="virtualbox"
+#
+### Golang
+#
+export GOPATH=$HOME/go
+#
+### Android
+#
+export ANDROID_NDK="$HOME/dev/lib/android/android-ndk-r10e"
+export ANDROID_SDK="$HOME/Library/Android/sdk"
+export ANDROID_STANDALONE_TOOLCHAIN="$HOME/dev/lib/android/android-standalone-toolchain"
+export ANDROID_HOME="$ANDROID_SDK"
+#
+### Python
+#
+### General
+#
+export PATH=$GOPATH/bin:$PATH:$HOME/.rvm/bin:$ANDROID_NDK:$ANDROID_SDK/tools:$ANDROID_STANDALONE_TOOLCHAIN/bin
+export GURU_DEV_EXT=gdcjbkagamkiankghgfheojobpkdchjd
+#
+## Aliases & helpers
+### Tmux helper
+#
 mux() {
     tmux a -t "$@" || tmux new-session -s "$@";
 }
-## Update dotfiles
-alias update-dotfiles='(~/dev/lib/vcsh/vcsh dotfiles add -u && ~/dev/lib/vcsh/vcsh dotfiles commit -m "updates" && ~/dev/lib/vcsh/vcsh dotfiles push origin master) &> /dev/null'
-
-# Append to the path
-export PATH=$PATH:~/dev/lib/phantomjs-1.9.7-macosx/bin
-export PATH=$PATH:~/dev/lib/android-sdk/platform-tools
-export PATH=$PATH:~/dev/lib/vcsh
-export PATH=$PATH:~/dev/lib/apache-maven-3.2.3/bin
-export PATH=$PATH:$GOPATH/bin
-
-# Environment variables
-export GOPATH="/Users/sandile/go"
-export M2_HOME="~/dev/lib/apache-maven-3.2.3"
-export PORT="3000"
-
-## Tmux and other multiplexers
-export TERM='xterm-256color'
+#
+### Git Aliases
+#
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gp="git pull"
+alias gaa="git add -A"
+alias gac="git add -A && git commit -m"
+alias pushdev="git push origin develop"
+alias pulldev="git pull origin develop"
+#
+### Git Flow Aliases
+#
+alias gf="git flow"
+alias feature="git flow feature"
+alias hotfix="git flow hotfix"
+alias release="git flow release"
+#
+### Pingtests
+#
+alias lolping="ping 104.160.131.1"
+alias googping="ping google.com"
+#
+### Teleports
+#
+alias goto-tudev="cd $HOME/dev/repos/tudev/tudev.github.io"
+alias goto-squareknot="cd $HOME/Squareknot/Patrick"
+alias goto-cnxl="cd $HOME/dev/repos/conxsoft/conx-logistics-platform/com.conx.logistics.frontend.webui"
+#
+### Networking Aliases
+#
+alias expose="ngrok -authtoken hyPleVr0pGbBXePMpRwj --subdomain=sandile"
+#
+export NVM_DIR="/Users/skeswa/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#
+### Docker
+#
+alias init-docker="docker-machine start default; eval \"\$(docker-machine env default)\""
